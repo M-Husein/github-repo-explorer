@@ -4,7 +4,7 @@ React application which integrates with github.com API and allows user to search
 
 ### Demo App:
 
-**[GitHub repo explorer](https://github-repo-explorer-q.netlify.app/)**
+**[GitHub repo explorer](https://github-repo-explorer-q.netlify.app)**
 
 ### Features:
 
