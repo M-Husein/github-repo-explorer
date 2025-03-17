@@ -3,39 +3,52 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "author": "Muhamad Husein",
+  "scripts": {
+    "dev": "refine dev --devtools=false",
+    "start": "refine dev --devtools=false",
+    "build": "tsc && refine build",
+    "preview": "refine start",
+    "refine": "refine"
+  },
   "dependencies": {
+    "@ant-design/icons": "^5.5.1",
+    "@ant-design/v5-patch-for-react-19": "^1.0.3",
+    "@octokit/request": "^9.2.2",
+    "@octokit/types": "^13.8.0",
+    "@refinedev/antd": "^5.44.0",
     "@refinedev/cli": "^2.16.21",
     "@refinedev/core": "^4.47.1",
-    "@refinedev/devtools": "^1.1.32",
-    "@refinedev/kbar": "^1.3.6",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-router": "^7.0.2",
-    "@refinedev/simple-rest": "^5.0.1",
-    "@refinedev/antd": "^5.44.0",
+    "@refinedev/react-router": "^1.0.0",
+    "@tailwindcss/postcss": "^4.0.14",
     "antd": "^5.17.0",
-    "@ant-design/icons": "^5.5.1",
-    "@uiw/react-md-editor": "^3.19.5",
-    "@refinedev/react-router": "^1.0.0"
+    "postcss": "^8.5.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-error-boundary": "^5.0.0",
+    "react-icons": "^5.5.0",
+    "react-markdown": "^10.1.0",
+    "react-router": "^7.0.2",
+    "react-syntax-highlighter": "^15.6.1",
+    "rehype-raw": "^7.0.0",
+    "remark-gfm": "^4.0.1",
+    "tailwindcss": "^4.0.14"
   },
   "devDependencies": {
     "@types/node": "^18.16.2",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "@types/react-syntax-highlighter": "^15.5.13",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
     "@vitejs/plugin-react": "^4.0.0",
     "eslint": "^8.38.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.3.4",
+    "terser": "^5.39.0",
     "typescript": "^5.4.2",
-    "vite": "^4.3.1"
-  },
-  "scripts": {
-    "dev": "refine dev",
-    "build": "tsc && refine build",
-    "start": "refine start",
-    "refine": "refine"
+    "vite": "^4.3.1",
+    "vite-plugin-minify": "^2.1.0"
   },
   "browserslist": {
     "production": [
@@ -48,8 +61,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "refine": {
-    "projectId": "hbUm7S-1w1eTF-pJZfBS"
   }
 }

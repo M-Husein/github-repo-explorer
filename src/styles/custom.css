@@ -1,0 +1,117 @@
+svg {
+  display: inline-block;
+}
+
+.repo-item {
+  margin-bottom: 1rem;
+  border-radius: 0 !important;
+  border: 1px solid #d9d9d9;
+  background: #fff;
+  
+  @apply shadow;
+}
+
+.repo-item .a-collapse-header {
+  align-items: center !important;
+  position: sticky !important;
+  border-radius: 0 !important;
+  top: 56px;
+  z-index: 11;
+  user-select: none;
+  background: #fff;
+}
+
+.repo-item .a-collapse-header:hover {
+  background: #eee;
+}
+
+[data-theme="dark"] .repo-item,
+[data-theme="dark"] .repo-item .a-collapse-header {
+  background: #121212;
+}
+
+[data-theme="dark"] .repo-item {
+  border-color: #555;
+}
+
+[data-theme="dark"] .repo-item .a-collapse-header:hover {
+  background: #001529;
+}
+
+.repo-item.a-collapse-item-active .a-collapse-header {
+  border-bottom: 1px solid #d9d9d9;
+}
+
+[data-theme="dark"] .repo-item.a-collapse-item-active .a-collapse-header {
+  border-bottom-color: #555;
+}
+
+.repo-item .a-collapse-content-box {
+  padding: 0 8px !important;
+}
+
+.repo-item .a-collapse-header-text,
+.repo-item .a-collapse-expand-icon {
+  pointer-events: none;
+}
+
+.hide-child:not(:hover) .chide {
+  display: none;
+}
+
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table {
+  display: table;
+  width: 100%;
+  margin-bottom: 1rem;
+  vertical-align: top;
+  border-color: #d1d5db;
+}
+
+.table > thead {
+  vertical-align: bottom;
+}
+
+.table > tbody {
+  vertical-align: inherit;
+}
+
+.table tbody, 
+.table td, 
+.table tfoot, 
+.table th, 
+.table thead, 
+.table tr 
+{
+  border-color: inherit;
+}
+
+.table > :not(caption) > * {
+  border-width: 1px;
+}
+
+.table > :not(caption) > * > * {
+  padding: .5rem;
+  color: #212529;
+  background-color: #fff;
+  border-bottom-width: 1px;
+}
+
+[data-theme="dark"] .table {
+  border-color: #495057;
+}
+
+[data-theme="dark"] .table > :not(caption) > * > * {
+  color: #adb5bd;
+  background-color: #212529;
+  border-color: #495057;
+}
+
+.table-striped-columns > :not(caption) > tr > :nth-child(2n), 
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+  box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, .05);
+}

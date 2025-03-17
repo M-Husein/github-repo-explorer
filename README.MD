@@ -1,11 +1,34 @@
 # github-repo-explorer
 
-<div align="center" style="margin: 30px;">
-    <a href="https://refine.dev">
-    <img alt="refine logo" src="https://refine.ams3.cdn.digitaloceanspaces.com/readme/refine-readme-banner.png">
-    </a>
-</div>
-<br/>
+React application which integrates with github.com API and allows user to search users with a username similar to the value entered in text input.
+
+### Demo App:
+
+**[GitHub repo explorer](https://github-repo-explorer-q.netlify.app/)**
+
+### Features:
+
+- Search user by username.
+- User repository list.
+- Repository details.
+- Responsive design.
+- Toggle light or dark color scheme.
+- Search by voice using **[SpeechRecognition](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition)**, the interface of the **[Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API)**.
+- Speech content in repository detail page using **[Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API)**.
+
+## Project setup
+
+Clone or download this repo.
+
+First is important copy or rename file **.env.example** to **.env** and configuration your **[GitHub access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)**.
+
+Then install dependencies:
+
+```bash
+npm install
+```
+
+Then follow below instruction.
 
 This [Refine](https://github.com/refinedev/refine) project was generated with [create refine-app](https://github.com/refinedev/refine/tree/master/packages/create-refine-app).
 
