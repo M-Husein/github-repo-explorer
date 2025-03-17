@@ -28,10 +28,6 @@ Then install dependencies:
 npm install
 ```
 
-Then follow below instruction.
-
-This [Refine](https://github.com/refinedev/refine) project was generated with [create refine-app](https://github.com/refinedev/refine/tree/master/packages/create-refine-app).
-
 ## Available Scripts
 
 ### Running the development server.
