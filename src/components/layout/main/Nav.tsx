@@ -16,7 +16,7 @@ export const Nav: React.FC<RefineThemedLayoutV2HeaderProps> = () => {
   return (
     <Layout.Header 
       style={headerStyles} 
-      className={(mode === 'dark' ? '' : 'bg-blue-100! ') + "flex! items-center shadow sticky top-0 z-1035"}
+      className={(mode === 'dark' ? '' : 'bg-blue-100! ') + "flex! items-center shadow sticky top-0 z-1051"}
     >
       <Col 
         lg={16} 

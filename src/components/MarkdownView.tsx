@@ -115,7 +115,7 @@ export const MarkdownView = ({
         table,
       }}
     >
-      {children}
+      {(children || '').replaceAll("any,", "div")}
     </ReactMarkdown>
   );
 }

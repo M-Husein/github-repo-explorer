@@ -12,7 +12,8 @@ export const SpeechContent = ({
   className,
   text,
 }: SpeechContentProps) => {
-  const utteranceRef = useRef() as any;
+  const utteranceRef: any = useRef();
+  const divRef: any = useRef();
   const [voice, setVoice] = useState<string>('0');
   const [rateValue, setRateValue] = useState<number>(1);
   const [pitchValue, setPitchValue] = useState<number>(1);
@@ -149,12 +150,15 @@ export const SpeechContent = ({
   }
 
   return (
-    <div className={cx("flex gap-1", className)}>
+    <div ref={divRef} className={cx("flex gap-1", className)}>
       <Select
         className="w-full"
+        showSearch
+        optionFilterProp="label"
         value={voice}
         onChange={changeVoice}
         options={voiceOptions()}
+        getPopupContainer={() => divRef.current}
       />
 
       <Popover

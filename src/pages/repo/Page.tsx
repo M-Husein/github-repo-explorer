@@ -8,6 +8,8 @@ import { SpeechContent } from '@/components/SpeechContent';
 import { useMode } from "@/contexts/color-mode";
 import { numShort, parseDate, parseNumber } from '@/utils';
 
+const githubUrl = "https://github.com/";
+
 export default function Page(){
   const { params: { owner, repo } } = useParsed<any>();
   const { mode } = useMode();
@@ -37,9 +39,7 @@ export default function Page(){
     id: "{repo}"
   });
 
-  console.log('data: ', data);
   let detail = data?.data || {};
-
   let loadingData = isEnabled && (isLoading || isFetching || isRefetching);
 
   const {
@@ -88,12 +88,11 @@ export default function Page(){
 
       {!!detail && (
         <article>
-          <h1 className="text-3xl break-all">
+          <h1 className="text-3xl font-normal! break-all">
             <a
               href={detail.owner?.html_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-normal"
             >
               <img
                 draggable={false}
@@ -132,7 +131,7 @@ export default function Page(){
 
           <div className="my-5 flex flex-col lg:flex-row flex-wrap gap-2">
             <Button
-              href={`https://github.com/${owner}/${repo}/watchers`}
+              href={`${githubUrl}${owner}/${repo}/watchers`}
               target="_blank"
               rel="noopener noreferrer"
               title={detail.watchers_count ? parseNumber(detail.watchers_count) + ' watchers' : ''}
@@ -145,7 +144,7 @@ export default function Page(){
               </b>
             </Button>
             <Button
-              href={`https://github.com/${owner}/${repo}/forks`}
+              href={`${githubUrl}${owner}/${repo}/forks`}
               target="_blank"
               rel="noopener noreferrer"
               title={detail.forks_count ? parseNumber(detail.forks_count) + ' forks' : ''}
@@ -160,7 +159,7 @@ export default function Page(){
               </b>
             </Button>
             <Button
-              href={`https://github.com/${owner}/${repo}/stargazers`}
+              href={`${githubUrl}${owner}/${repo}/stargazers`}
               target="_blank"
               rel="noopener noreferrer"
               title={detail.stargazers_count ? parseNumber(detail.stargazers_count) + ' Stars' : ''}
@@ -202,7 +201,7 @@ export default function Page(){
                   }
                   
                   <Button
-                    href={`https://github.com/${owner}/${repo}/archive/refs/heads/${detail.default_branch}.zip`}
+                    href={`${githubUrl}${owner}/${repo}/archive/refs/heads/${detail.default_branch}.zip`}
                     download
                     block
                     icon={<BsDownload />}
@@ -234,7 +233,7 @@ export default function Page(){
               {detail.topics.map((item: string) =>
                 <a
                   key={item}
-                  href={`https://github.com/topics/${item}`}
+                  href={`${githubUrl}topics/${item}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="py-1 px-2 rounded-xl bg-blue-200"
@@ -245,7 +244,10 @@ export default function Page(){
             </p>
           )}
 
-          <section ref={contentRef} className="my-5">
+          <section 
+            ref={contentRef} 
+            className="my-5"
+          >
             {!loadingData && !loadingReadme && !!markdown && (
               <MarkdownView 
                 className="my-5"
