@@ -1,4 +1,4 @@
-import { useRef, useMemo, useState } from 'react'; // useEffect
+import { useRef, useMemo, useState } from 'react';
 import { useDocumentTitle } from "@refinedev/react-router";
 import { HttpError, useOne, useParsed } from "@refinedev/core";
 import { Col, Button, Popover, Input, Space, Divider, Badge } from 'antd';
@@ -75,6 +75,12 @@ export default function Page(){
     }
   }
 
+  const renderTag = (label: string, date: string) => (
+    <span className={(mode === 'dark' ? "bg-gray-500" : "bg-gray-200") + " inline-block py-1 px-2 rounded"}>
+      {label}: <time dateTime={date}>{parseDate(date)}</time>
+    </span>
+  );
+
   return (
     <Col 
       lg={16} 
@@ -119,16 +125,10 @@ export default function Page(){
             />
           </h1>
 
-          <div className="text-xs mt-2">
-            <span className={(mode === 'dark' ? "bg-gray-500" : "bg-gray-200") + " inline-block py-1 px-2 rounded mb-1"}>
-              Created at: <time dateTime={detail.created_at}>{parseDate(detail.created_at)}</time>
-            </span>
-            <span className={(mode === 'dark' ? "bg-gray-500" : "bg-gray-200") + " inline-block py-1 px-2 rounded bg-gray-200 mb-1 mx-1"}>
-              Updated at: <time dateTime={detail.updated_at}>{parseDate(detail.updated_at)}</time>
-            </span>
-            <span className={(mode === 'dark' ? "bg-gray-500" : "bg-gray-200") + " inline-block py-1 px-2 rounded bg-gray-200 mb-1"}>
-              Pushed at: <time dateTime={detail.pushed_at}>{parseDate(detail.pushed_at)}</time>
-            </span>
+          <div className="text-xs mt-2 space-x-1 space-y-1">
+            {renderTag('Created at', detail.created_at)}
+            {renderTag('Updated at', detail.updated_at)}
+            {renderTag('Pushed at', detail.pushed_at)}
           </div>
 
           <div className="my-5 flex flex-col lg:flex-row flex-wrap gap-2">

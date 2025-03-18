@@ -48,7 +48,8 @@
     "terser": "^5.39.0",
     "typescript": "^5.4.2",
     "vite": "^4.3.1",
-    "vite-plugin-minify": "^2.1.0"
+    "vite-plugin-minify": "^2.1.0",
+    "vite-tsconfig-paths": "^5.1.4"
   },
   "browserslist": {
     "production": [

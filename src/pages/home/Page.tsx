@@ -8,7 +8,7 @@ import { BsPeople, BsGeoAlt, BsEnvelope } from 'react-icons/bs';
 import { useMode } from "@/contexts/color-mode";
 import { FormSearch } from '@/components/FormSearch';
 import { ListRepo } from './ListRepo';
-import { numShort } from '@/utils';
+import { numShort, parseNumber } from '@/utils';
 
 const appName = import.meta.env.VITE_APP_NAME;
 const initUsers = { items: [] };
@@ -149,7 +149,14 @@ export default function Page(){
   }
 
   const changePagination = (page: number, size: number) => {
-    setSearchParams({ current: '' + page, pageSize: '' + size }, { replace: true })
+    setSearchParams(
+      { 
+        q: searchPayload,
+        current: '' + page, 
+        pageSize: '' + size
+      },
+      { replace: true }
+    );
   }
 
   const parseItem = (item: any) => {
@@ -328,16 +335,22 @@ export default function Page(){
         )
       }
 
-      <Pagination
-        className="my-6!"
-        hideOnSinglePage
-        align="center"
-        current={+current}
-        pageSize={+pageSize}
-        total={users.total_count || 0}
-        showTotal={(total, range) => `${range[0]}-${range[1]} of ${total} items`}
-        onChange={changePagination}
-      />
+      <nav 
+        className="my-6 px-4"
+        aria-label="Page navigation"
+      >
+        <Pagination
+          className="flex-wrap"
+          hideOnSinglePage
+          align="center"
+          size="small"
+          current={+current}
+          pageSize={+pageSize}
+          total={users.total_count || 0}
+          showTotal={(total, range) => `${range[0]}-${range[1]} of ${parseNumber(total)} items`}
+          onChange={changePagination}
+        />
+      </nav>
     </Col>
   );
 }
