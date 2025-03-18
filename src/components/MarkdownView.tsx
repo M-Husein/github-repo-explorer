@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
+import { Divider } from 'antd';
 import { CodeView } from '@/components/CodeView';
 import { cx } from '@/utils';
 
@@ -60,6 +61,8 @@ export const MarkdownView = ({
     )
   }
 
+  const hr = () => <Divider />;
+
   const iframe = ({ node, className, width, height, ...props }: any) => (
     <iframe
       {...props}
@@ -109,6 +112,7 @@ export const MarkdownView = ({
         h4: headerTag,
         h5: headerTag,
         h6: headerTag,
+        hr,
         img,
         iframe,
         p,

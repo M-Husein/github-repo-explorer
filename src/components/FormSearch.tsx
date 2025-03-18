@@ -8,7 +8,7 @@ type FormSearchProps = {
   size?: string,
   className?: string,
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void,
-  onSearch?: (e: any) => void,
+  onSearch?: (value: string) => void,
   onSpeechEnd?: (value: string) => void,
 }
 
@@ -50,9 +50,8 @@ export const FormSearch = ({
 
         recognition.current.stop();
         setIsEnabled(false);
+        
         onSpeechEnd?.(transcript);
-
-        // onChange?.(transcript);
         onSearch?.(transcript);
       });
     }

@@ -63,8 +63,8 @@ export default function Page(){
     return '';
   }, [dataReadme]);
 
-  const copyToClipboard = (e: any) => {
-    let input = e.target?.previousElementSibling;
+  const copyToClipboard = (id: any) => {
+    let input = document.getElementById(id) as HTMLInputElement;
 
     if(input){
       input.focus();
@@ -186,17 +186,22 @@ export default function Page(){
                       { label: "SSH", value: detail.ssh_url },
                       { label: "GitHub CLI", value: 'gh repo clone ' + detail.full_name },
                     ].map((item: any, idx: number) =>
-                      <div key={item.label} className="py-2">
+                      <div key={item.label} className="py-1.5">
                         <label htmlFor={"cloneInput" + idx}>{item.label}</label>
-                        <Space.Compact className="mt-1 w-full">
+                        <Space.Compact className="mt-px w-full">
                           <Input
                             readOnly
-                            defaultValue={item.value}
-                            // onMouseUp={selectAll}
+                            size="small"
+                            value={item.value}
                             className="truncate"
                             id={"cloneInput" + idx}
                           />
-                          <Button onClick={copyToClipboard}>Copy</Button>
+                          <Button 
+                            size="small" 
+                            onClick={() => copyToClipboard("cloneInput" + idx)}
+                          >
+                            Copy
+                          </Button>
                         </Space.Compact>
                       </div>
                     )
@@ -207,7 +212,7 @@ export default function Page(){
                     download
                     block
                     icon={<BsDownload />}
-                    className="mt-4"
+                    className="mt-3"
                   >
                     Download ZIP
                   </Button>
