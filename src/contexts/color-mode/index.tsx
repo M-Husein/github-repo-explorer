@@ -21,7 +21,7 @@ export const ColorModeContextProvider: React.FC<PropsWithChildren> = ({
 
   useEffect(() => {
     localStorage.setItem("colorMode", mode);
-    document.body.setAttribute('data-theme', mode);
+    document.documentElement.setAttribute('data-theme', mode);
   }, [mode]);
 
   const setColorMode = () => {

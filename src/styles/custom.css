@@ -2,6 +2,10 @@ svg {
   display: inline-block;
 }
 
+[data-theme="dark"] {
+  color-scheme: dark;
+}
+
 .repo-item {
   margin-bottom: 1rem;
   border-radius: 0 !important;
