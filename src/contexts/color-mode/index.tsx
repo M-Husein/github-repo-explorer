@@ -43,6 +43,7 @@ export const ColorModeContextProvider: React.FC<PropsWithChildren> = ({
           algorithm: mode === "light" ? theme.defaultAlgorithm : theme.darkAlgorithm,
           token: {
             fontSize: 15,
+            colorBorder: '#ccc',
           },
         }}
       >
