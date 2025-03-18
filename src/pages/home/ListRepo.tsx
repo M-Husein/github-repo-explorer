@@ -116,9 +116,9 @@ export const ListRepo = ({ list }: ListRepoProps) => {
           )
           :
           !loadingFilter && (
-            <h2 className="text-lg py-4 text-center font-medium">
+            <h5 className="py-4 text-center">
               {list.length ? 'Not Found' : 'No repository'}
-            </h2>
+            </h5>
           )
         }
       </div>

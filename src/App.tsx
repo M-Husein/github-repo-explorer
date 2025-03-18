@@ -8,7 +8,6 @@ import { App as AntdApp } from "antd";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
 import { Layout } from '@/components/layout/main';
 import { ColorModeContextProvider } from "@/contexts/color-mode";
-import { SplashScreen } from '@/components/SplashScreen';
 import { lazyComponent } from '@/utils/components';
 
 // Pages:
@@ -24,19 +23,9 @@ const RefineProvider = () => (
         dataProvider={dataProvider()}
         notificationProvider={useNotificationProvider}
         routerProvider={routerBindings}
-        resources={[
-          {
-            name: "home",
-            list: "/",
-            meta: {
-              label: "Home",
-            },
-          },
-        ]}
         options={{
           disableTelemetry: true,
           syncWithLocation: false,
-          warnWhenUnsavedChanges: false,
           useNewQueryKeys: true,
           /** @DOCS : https://refine.dev/docs/core/refine-component/#reactquery */
           reactQuery: {
@@ -66,8 +55,8 @@ const router = createBrowserRouter([
       {
         path: "/",
         children: [
-          { index: true, element: lazyComponent(Home, <SplashScreen />) },
-          { path: "/repo/:repo/:owner", element: lazyComponent(RepoDetail, <SplashScreen />) },
+          { index: true, element: lazyComponent(Home) },
+          { path: "/repo/:repo/:owner", element: lazyComponent(RepoDetail) },
         ],
       },
       { path: "*", Component: ErrorComponent },
@@ -75,8 +64,4 @@ const router = createBrowserRouter([
   }
 ]);
 
-export function App(){
-	return (
-		<RouterProvider router={router} />
-	);
-}
+export const App = () => <RouterProvider router={router} />;

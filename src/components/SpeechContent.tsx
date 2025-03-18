@@ -150,9 +150,9 @@ export const SpeechContent = ({
   }
 
   return (
-    <div ref={divRef} className={cx("flex gap-1", className)}>
+    <div ref={divRef} className={cx("flex flex-wrap gap-1", className)}>
       <Select
-        className="w-full"
+        className="grow"
         showSearch
         optionFilterProp="label"
         value={voice}
@@ -163,6 +163,7 @@ export const SpeechContent = ({
 
       <Popover
         placement="bottom"
+        getPopupContainer={() => divRef.current}
         content={
           <div className="h-43 inline-block">
             <Slider
@@ -183,6 +184,7 @@ export const SpeechContent = ({
 
       <Popover
         placement="bottom"
+        getPopupContainer={() => divRef.current}
         content={
           <div className="h-43 inline-block">
             <Slider
@@ -203,6 +205,7 @@ export const SpeechContent = ({
 
       <Popover
         placement="bottom"
+        getPopupContainer={() => divRef.current}
         content={
           <div className="h-43 inline-block">
             <Slider

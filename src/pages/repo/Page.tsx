@@ -64,13 +64,15 @@ export default function Page(){
   }, [dataReadme]);
 
   const copyToClipboard = (e: any) => {
-    const input = e.target.previousElementSibling;
+    let input = e.target?.previousElementSibling;
 
-    input.focus();
-    input.select();
-    input.setSelectionRange(0, 99999); // For mobile devices
+    if(input){
+      input.focus();
+      input.select();
+      input.setSelectionRange(0, 99999); // For mobile devices
 
-    navigator?.clipboard?.writeText?.(input.value);
+      navigator?.clipboard?.writeText?.(input.value);
+    }
   }
 
   return (
@@ -82,12 +84,12 @@ export default function Page(){
       {!!markdown && mountMarkdown && (
         <SpeechContent
           text={contentRef.current?.innerText || ''}
-          className={(mode === 'dark' ? "bg-gray-700 border-gray-700" : "bg-white border-gray-200") + " border shadow sticky top-14 left-0 right-0 z-1031 p-1 mb-6 lg:mx-0 lg:mt-0 -mx-4 -mt-4"}
+          className={(mode === 'dark' ? "bg-gray-700 border-gray-700" : "bg-white border-gray-200") + " border shadow sticky top-14 left-0 right-0 z-1031 p-1 mb-6 -mt-4 lg:mt-0"}
         />
       )}
 
       {!!detail && (
-        <article>
+        <article className="px-4">
           <h1 className="text-3xl font-normal! break-all">
             <a
               href={detail.owner?.html_url}

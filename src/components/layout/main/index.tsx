@@ -28,7 +28,7 @@ export const Layout: React.FC<any> = ({
         visibilityHeight={75}
         icon={<ArrowUpOutlined />} // @ts-ignore
         tabIndex={-1}
-        style={{ marginBottom: -37 }}
+        style={{ marginBottom: -39 }}
         title="Back to top"
       />
     </div>
