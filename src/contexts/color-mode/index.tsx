@@ -20,7 +20,7 @@ export const ColorModeContextProvider: React.FC<PropsWithChildren> = ({
   const [mode, setMode] = useState(colorModeFromLocalStorage || systemPreference);
 
   useEffect(() => {
-    window.localStorage.setItem("colorMode", mode);
+    localStorage.setItem("colorMode", mode);
     document.body.setAttribute('data-theme', mode);
   }, [mode]);
 
@@ -38,7 +38,6 @@ export const ColorModeContextProvider: React.FC<PropsWithChildren> = ({
       <ConfigProvider
         prefixCls="a" // Default = "ant" (NOTE: Change in scss / css files too)
         iconPrefixCls="ai" // Default = "anticon" (NOTE: Change in scss / css files too)
-        // you can change the theme colors here. example: ...RefineThemes.Magenta,
         theme={{
           algorithm: mode === "light" ? theme.defaultAlgorithm : theme.darkAlgorithm,
           token: {
