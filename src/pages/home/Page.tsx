@@ -63,25 +63,27 @@ export default function Page(){
   let loadingList = isEnabled && (isLoading || isFetching || isRefetching);
 
   useEffect(() => {
-    if(!isError && dataSearchResult){
+    if(isEnabled && !isError && dataSearchResult){
       setUsers(dataSearchResult);
     }
-  }, [dataSearchResult, isError]);
+  }, [isEnabled, isError, dataSearchResult]);
 
   const changeSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     let val = e.target.value;
 
     setSearchValue(val);
 
-    if(!val && users.items.length){
+    // Clear users data & searchParams
+    if(!val && hasData){
       setUsers(initUsers);
+      setSearchParams({});
     }
   }
 
-  const doSearch = (val: string | null) => {
+  const doSearch = (val: string) => {
     setSearchValue(val);
     setSearchParams(
-      val?.length ? { q: val, current: '1', pageSize: '' + pageSize } : {}, 
+      val.length ? { q: val, current: '1', pageSize: '' + pageSize } : {}, 
       { replace: true }
     );
   }
@@ -306,15 +308,17 @@ export default function Page(){
         gutter={[32, 32]} 
         align="middle" 
         className="p-4 content-center max-md:mx-0!"
-        style={users.items.length ? {} : { minHeight: 'calc(100vh - 112px)' }}
+        style={hasData ? {} : { minHeight: 'calc(100vh - 112px)' }}
       >
         <Col lg={6} sm={9} xs={24} className="mx-auto">
           <img 
             alt={appName} 
             src="/media/img/logo-310x310.png"
-            className="max-md:w-3/4 rounded-3xl mx-auto mb-1"
+            draggable={false}
+            className="w-full max-md:w-3/4 rounded-3xl mx-auto mb-2 transition-all"
+            style={hasData ? { width: '65%' } : {}}
           />
-          <h1 className="h5 mb-0! text-center">{appName}</h1>
+          <h1 translate="no" className="h5 mb-0! text-center">{appName}</h1>
         </Col>
 
         <Col lg={18} xs={24}>
