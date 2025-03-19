@@ -43,6 +43,7 @@ export default function Page(){
 
   let searchValueTrim = searchPayload.trim();
   let isEnabled = !!current && !!searchValueTrim.length;
+  let hasData = !!users.items.length;
 
   const {
     data: dataSearchResult,
@@ -69,16 +70,20 @@ export default function Page(){
 
   const changeSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     let val = e.target.value;
+
+    setSearchValue(val);
+
     if(!val && users.items.length){
       setUsers(initUsers);
     }
-
-    setSearchValue(val);
   }
 
   const doSearch = (val: string | null) => {
-    setSearchParams(val?.length ? { q: val, current: '1', pageSize: '' + pageSize } : {}, { replace: true });
     setSearchValue(val);
+    setSearchParams(
+      val?.length ? { q: val, current: '1', pageSize: '' + pageSize } : {}, 
+      { replace: true }
+    );
   }
 
   const updateUsers = (item: any, profile: any, repos?: any) => {
@@ -325,32 +330,36 @@ export default function Page(){
       {loadingList ? 
         renderLoader()
         :
-        !!users.items.length && (
-          <Collapse
-            bordered={false}
-            expandIconPosition="end"
-            className="mt-4! bg-transparent!"
-            items={users.items.map(parseItem)}
-          />
+        hasData && (
+          <>
+            <Collapse
+              bordered={false}
+              expandIconPosition="end"
+              className="mt-4! bg-transparent!"
+              items={users.items.map(parseItem)}
+            />
+          </>
         )
       }
 
-      <nav 
-        className="my-6 px-4"
-        aria-label="Page navigation"
-      >
-        <Pagination
-          className="flex-wrap"
-          hideOnSinglePage
-          align="center"
-          size="small"
-          current={+current}
-          pageSize={+pageSize}
-          total={users.total_count || 0}
-          showTotal={(total, range) => `${range[0]}-${range[1]} of ${parseNumber(total)} items`}
-          onChange={changePagination}
-        />
-      </nav>
+      {hasData && (
+        <nav 
+          className="my-6 px-4"
+          aria-label="Page navigation"
+        >
+          <Pagination
+            className="flex-wrap"
+            hideOnSinglePage
+            align="center"
+            size="small"
+            current={+current}
+            pageSize={+pageSize}
+            total={users.total_count || 0}
+            showTotal={(total, range) => `${range[0]}-${range[1]} of ${parseNumber(total)} items`}
+            onChange={changePagination}
+          />
+        </nav>
+      )}
     </Col>
   );
 }
